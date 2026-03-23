@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import Hero from '@/components/home/Hero';
+import Features from '@/components/home/Features';
 
 const Index = () => {
     return (
-        <div className="flex h-screen items-center justify-center">
-             <h1 className="text-5xl text-red-500">Hello Coder....!</h1>
-        </div>
-    )
+        <main>
+            <Hero />
+            <Features />
+        </main>
+    );
 }
 
-export default Index
+export default Index;
