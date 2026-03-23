@@ -1,30 +1,73 @@
-import React from 'react';
-import { Coffee } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { ShoppingCart, Menu, X } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/our-blends", label: "Our Blends" },
+  { href: "/products", label: "Products" },
+  { href: "/contact", label: "Contact" },
+];
+
+const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center space-x-2">
-            <Coffee className="h-8 w-8 text-brown-200" />
-            <span className="text-2xl font-bold text-white">Coffee3D</span>
-          </Link>
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50">
+      <div className="container mx-auto px-6 py-3 bg-black/30 backdrop-blur-lg rounded-full border border-stone-700/60 shadow-lg">
+        <div className="flex justify-between items-center">
+          <NavLink to="/" className="text-2xl font-bold text-white tracking-wider">
+            BLACK<span className="text-brown-400">UI</span>
+          </NavLink>
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-white/80 hover:text-white transition-colors">Home</Link>
-            <a href="/#features" className="text-white/80 hover:text-white transition-colors">Features</a>
-            <Link to="/products" className="text-white/80 hover:text-white transition-colors">Products</Link>
-            <Link to="/contact" className="text-white/80 hover:text-white transition-colors">Contact</Link>
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.href}
+                to={link.href}
+                className={({ isActive }) =>
+                  `relative text-stone-200 hover:text-white transition-colors duration-300
+                   after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-brown-400 after:transition-all after:duration-300
+                   ${isActive ? "text-white after:w-full" : "after:w-0 hover:after:w-full"}`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
           </nav>
-          <button className="hidden md:block bg-brown-700 hover:bg-brown-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
-            Order Now
-          </button>
+          <div className="flex items-center space-x-4">
+            <button className="text-stone-200 hover:text-white transition-colors duration-300">
+              <ShoppingCart size={22} />
+            </button>
+            <button
+              className="md:hidden text-stone-200 hover:text-white transition-colors duration-300"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden mt-2 bg-black/50 backdrop-blur-lg rounded-2xl border border-stone-700/60 p-6">
+          <nav className="flex flex-col items-center space-y-6">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.href}
+                to={link.href}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `text-lg ${isActive ? "text-brown-300" : "text-stone-200"} hover:text-white transition-colors duration-300`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
 
 export default Header;
-

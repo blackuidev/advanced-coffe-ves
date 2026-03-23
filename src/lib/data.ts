@@ -1,50 +1,116 @@
-export const coffeeBlends = [
+import { ThreeDCarouselItem } from "@/components/lightswind/3d-carousel";
+
+export const blendsData: ThreeDCarouselItem[] = [
   {
     id: 1,
-    name: "Aurora Dawn",
-    origin: "Ethiopia, Yirgacheffe",
-    description: "A bright, crisp blend with floral notes and a hint of citrus. Perfect for starting your day with a celestial awakening.",
-    price: 18.50,
-    imageUrl: "https://images.unsplash.com/photo-1559493249-0c441a455c99?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Midnight Espresso",
+    brand: "Signature Blends",
+    description: "A deep, intense espresso with notes of dark chocolate and a hint of smokiness. Perfect for late-night work sessions or a powerful morning start.",
+    tags: ["Dark Roast", "Intense", "Chocolate"],
+    imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    link: "#",
   },
   {
     id: 2,
-    name: "Midnight Velvet",
-    origin: "Sumatra, Mandheling",
-    description: "A rich, full-bodied dark roast with earthy and chocolatey undertones. Smooth, bold, and mysteriously satisfying.",
-    price: 22.00,
-    imageUrl: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Aurora Brew",
+    brand: "Exotic Series",
+    description: "A magical, medium-roast blend with vibrant, fruity notes and a smooth, clean finish. Inspired by the ethereal beauty of the northern lights.",
+    tags: ["Medium Roast", "Fruity", "Vibrant"],
+    imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    link: "#",
   },
   {
     id: 3,
-    name: "Golden Hour",
-    origin: "Colombia, Huila",
-    description: "A perfectly balanced medium roast with notes of caramel, nuts, and a smooth, clean finish. Your daily moment of warmth.",
-    price: 19.99,
-    imageUrl: "https://images.unsplash.com/photo-1511920183353-3c2c5d4e5d8c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Desert Bloom",
+    brand: "Artisanal Collection",
+    description: "A unique light roast with delicate floral notes and a sweet, honey-like aftertaste. Captures the subtle beauty of a desert flower in bloom.",
+    tags: ["Light Roast", "Floral", "Sweet"],
+    imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    link: "#",
   },
   {
     id: 4,
-    name: "Cosmic Wave",
-    origin: "Kenya, AA",
-    description: "An adventurous single-origin with a complex acidity and vibrant notes of blackcurrant and wine. A truly out-of-this-world experience.",
-    price: 24.75,
-    imageUrl: "https://images.unsplash.com/photo-1552346986-7259f8c6b1a5?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Oceanic Mist",
+    brand: "Coastal Series",
+    description: "A refreshing cold brew concentrate with a crisp, clean taste and a hint of sea salt. As invigorating as a cool mist on a morning beach walk.",
+    tags: ["Cold Brew", "Crisp", "Refreshing"],
+    imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    link: "#",
   },
-  {
-    id: 5,
-    name: "Lunar Haze",
-    origin: "Brazil, Cerrado",
-    description: "A smooth, low-acidity espresso blend with a creamy body and notes of dark chocolate and toasted almond. Ideal for a dreamy latte.",
-    price: 21.00,
-    imageUrl: "https://images.unsplash.com/photo-1579992308804-5512a819c118?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    id: 6,
-    name: "Solar Flare",
-    origin: "Costa Rica, Tarrazú",
-    description: "An intensely aromatic and bright coffee with a sharp, sweet snap. Notes of honey and apricot shine through in every cup.",
-    price: 23.50,
-    imageUrl: "https://images.unsplash.com/photo-1497515114629-48a444836bae?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
+];
+
+export interface Product {
+    id: number;
+    name: string;
+    category: "Beans" | "Gear";
+    price: number;
+    description: string;
+    imageUrl: string;
+}
+
+export const productsData: Product[] = [
+    {
+        id: 1,
+        name: "Sunrise Blend",
+        category: "Beans",
+        price: 18.99,
+        description: "A bright, medium roast with citrus notes. The perfect way to start your day.",
+        imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    },
+    {
+        id: 2,
+        name: "Mountain Roast",
+        category: "Beans",
+        price: 22.50,
+        description: "A bold, dark roast with an earthy, full-bodied flavor. Sourced from high-altitude farms.",
+        imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    },
+    {
+        id: 3,
+        name: "Gourmet Gold",
+        category: "Beans",
+        price: 29.99,
+        description: "An exclusive, single-origin light roast with complex floral and fruity notes. A true luxury.",
+        imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    },
+    {
+        id: 4,
+        name: "Hearthstone Blend",
+        category: "Beans",
+        price: 20.00,
+        description: "A comforting, medium-dark roast with notes of chocolate and toasted nuts. Perfect for a cozy day in.",
+        imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    },
+    {
+        id: 5,
+        name: "GrindMaster Pro",
+        category: "Gear",
+        price: 149.99,
+        description: "A professional-grade conical burr grinder for the perfect, consistent grind every time.",
+        imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    },
+    {
+        id: 6,
+        name: "Clarity Mugs (Set of 2)",
+        category: "Gear",
+        price: 35.00,
+        description: "Elegant double-walled glass mugs that keep your coffee hot while staying cool to the touch.",
+        imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    },
+    {
+        id: 7,
+        name: "The Barista's Choice",
+        category: "Gear",
+        price: 799.00,
+        description: "A semi-automatic espresso machine for cafe-quality shots at home. Stainless steel construction.",
+        imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    },
+    {
+        id: 8,
+        name: "Eco-Traveler Cup",
+        category: "Gear",
+        price: 25.00,
+        description: "A stylish and sustainable reusable coffee cup for your daily commute. Keep your drink hot for hours.",
+        imageUrl: "https://generated.vusercontent.net/placeholder.svg",
+    },
 ];
