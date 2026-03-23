@@ -1,75 +1,47 @@
-import React from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/lightswind/3d-carousel";
-import { Card, CardContent } from "@/components/lightswind/card";
-import { motion } from "framer-motion";
-import { coffeeBlends } from "@/lib/db";
+import React from 'react';
+import { GlowingCard, GlowingCards } from '@/components/lightswind/glowing-cards';
+import { coffeeBlends } from '@/lib/data';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 const OurBlends = () => {
+  const featuredBlends = coffeeBlends.slice(0, 3);
+
   return (
-    <section id="blends" className="py-24 bg-stone-950 text-white">
-      <div className="container mx-auto px-4 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold mb-4"
-        >
-          Explore Our Signature Blends
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-white/70 mb-16"
-        >
-          Each of our blends is crafted with passion and precision, sourced from the finest coffee-growing regions around the world. Discover your new favorite.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full max-w-4xl mx-auto"
-          >
-            <CarouselContent>
-              {coffeeBlends.map((blend, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <Card className="bg-stone-900 border-brown-800 overflow-hidden group">
-                      <CardContent className="relative flex aspect-square items-center justify-center p-0">
-                        <img
-                          src={blend.image}
-                          alt={blend.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <h3 className="text-2xl font-bold text-white mb-2">{blend.title}</h3>
-                          <p className="text-white/80 text-sm">{blend.description}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="text-white bg-brown-800 hover:bg-brown-700" />
-            <CarouselNext className="text-white bg-brown-800 hover:bg-brown-700" />
-          </Carousel>
-        </motion.div>
+    <section className="py-20 bg-black text-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brown-200 to-brown-400 mb-4">
+            Taste Our Craft
+          </h2>
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            A curated selection of our finest blends, each with a unique story and flavor profile waiting to be discovered.
+          </p>
+        </div>
+        <GlowingCards>
+          {featuredBlends.map((blend) => (
+            <GlowingCard key={blend.id} className="flex flex-col">
+              <div className="flex-grow">
+                <img src={blend.imageUrl} alt={blend.name} className="w-full h-64 object-cover rounded-lg mb-4" />
+                <h3 className="text-2xl font-bold text-brown-100">{blend.name}</h3>
+                <p className="text-white/60 mt-2">{blend.origin}</p>
+                <p className="text-white/80 mt-4 flex-grow">{blend.description}</p>
+              </div>
+              <div className="mt-6 flex justify-between items-center">
+                <p className="text-xl font-bold text-brown-200">${blend.price.toFixed(2)}</p>
+                <button className="bg-brown-800 hover:bg-brown-700 text-white font-bold py-2 px-5 rounded-full transition-colors">
+                  View Details
+                </button>
+              </div>
+            </GlowingCard>
+          ))}
+        </GlowingCards>
+        <div className="text-center mt-12">
+            <Link to="/products" className="inline-flex items-center gap-2 text-lg font-semibold text-brown-200 hover:text-white transition-all duration-300 group">
+                <span>Explore All Blends</span>
+                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+        </div>
       </div>
     </section>
   );
